@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Net Sec Traffic Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <img class="logo" src="assets/logo.svg" alt="Project logo" />
+      <div class="title">
+        <h1>Net Sec Traffic Analyzer</h1>
+        <p class="subtitle">Student-built tool to capture packets, spot suspicious patterns, and generate a simple dashboard.</p>
+        <div class="cta">
+          <a class="btn primary" href="#quickstart">Get Started</a>
+          <a class="btn" href="#features">Features</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="quickstart" class="card">
+      <h2>Quick Start</h2>
+      <ol>
+        <li><strong>Create a Python venv</strong>
+          <pre><code>python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scriptsctivate
+pip install -r requirements.txt</code></pre>
+        </li>
+        <li><strong>Analyze sample data (no admin needed)</strong>
+          <pre><code>python app.py analyze --input data/samples/synthetic_log.csv --report</code></pre>
+          <p>Open the newest file in <code>reports/</code>.</p>
+        </li>
+        <li><strong>Live capture (admin/root may be required)</strong>
+          <pre><code>python app.py capture --iface YOUR_INTERFACE
+python app.py analyze --input data/logs.csv --report</code></pre>
+        </li>
+      </ol>
+      <p class="note">Run only on networks you own or have permission to analyze.</p>
+    </section>
+
+    <section id="features" class="grid">
+      <div class="card">
+        <h3>Detections</h3>
+        <ul>
+          <li>ARP spoofing</li>
+          <li>DNS poisoning</li>
+          <li>Port scans</li>
+          <li>DoS spikes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reporting</h3>
+        <p>Static HTML report with charts for packets-per-second, top talkers, and DNS queries.</p>
+      </div>
+      <div class="card">
+        <h3>Configurable</h3>
+        <p>Tune thresholds in <code>config.yaml</code> to match your normal traffic baseline.</p>
+      </div>
+    </section>
+
+    <section class="card links">
+      <h2>Project Links</h2>
+      <ul>
+        <li><a href="README.html">Project README (rendered)</a> <span class="dim">(or view README.md in the repo)</span></li>
+        <li><a href="docs/baseline_tuning.md">Baseline & Tuning template</a></li>
+        <li><a href="docs/design.md">Design notes</a></li>
+        <li><a href="docs/threat_model.md">Threat model</a></li>
+        <li><a href="docs/usage_tips.md">Usage tips</a></li>
+        <li><a href="reports/" target="_blank">Sample reports folder</a> <span class="dim">(add one report file and link it below)</span></li>
+      </ul>
+      <p><strong>Optional:</strong> Once you generate a report, add a direct link here, e.g. <code>&lt;a href="reports/20250101_123000_report.html"&gt;View Sample Report&lt;/a&gt;</code>.</p>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>© 2025. For educational use on permitted networks only.</p>
+  </footer>
+
+  <script>
+    // Simple smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+  </script>
+</body>
+</html>
